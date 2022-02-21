@@ -32,7 +32,7 @@ const Home = (): JSX.Element => {
   useEffect(() => {
     async function loadProducts() {
       // TODO
-      api.get('products')
+      await api.get('products')
       .then(response => setProducts(response.data))
     }
 
@@ -46,7 +46,7 @@ const Home = (): JSX.Element => {
   return (
     <ProductList>
       {products.map((product) => (
-      <li>
+      <li key={product.id}>
         <img src={product.image} alt={product.title} />
         <strong>{product.title}</strong>
         <span>
